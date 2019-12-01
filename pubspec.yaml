@@ -1,0 +1,12 @@
+name: adventofcode2019
+description: Advent of code 2019
+author: Jan Štol <honzastol@gmail.com>
+
+environment:
+  sdk: '>=2.6.0 <3.0.0'
+
+dependencies:
+  path: ^1.6.4
+
+dev_dependencies:
+  test: ^1.9.4
