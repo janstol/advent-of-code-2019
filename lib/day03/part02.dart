@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:adventofcode2019/day03/intersections.dart';
-import 'package:adventofcode2019/day03/part01.dart';
 
 /// It turns out that this circuit is very timing-sensitive; you actually need
 /// to minimize the signal delay.
