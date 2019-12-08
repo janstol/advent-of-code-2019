@@ -1,6 +1,6 @@
 /// For part 1
-bool isValid(String password) {
-  final pass = password.toString().split("").map(int.parse).toList();
+bool isValidPassword(String password) {
+  final pass = password.split("").map(int.parse).toList();
   int lastNumber = -1;
   bool foundSameAdjacents = false;
 
@@ -20,7 +20,7 @@ bool isValid(String password) {
 }
 
 /// For part 2
-bool isValid2(String password) {
+bool isValidPassword2(String password) {
   final pass = password.split("").map(int.parse).toList();
   int lastNumber = -1;
   bool foundSameAdjacents = false;
