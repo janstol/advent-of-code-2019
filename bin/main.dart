@@ -1,11 +1,4 @@
-import 'package:adventofcode2019/day01/day01.dart';
-import 'package:adventofcode2019/day02/day02.dart';
-import 'package:adventofcode2019/day03/day03.dart';
-import 'package:adventofcode2019/day04/day04.dart';
-import 'package:adventofcode2019/day05/day05.dart';
-import 'package:adventofcode2019/day06/day06.dart';
-import 'package:adventofcode2019/day07/day07.dart';
-import 'package:adventofcode2019/day08/day08.dart';
+import 'package:adventofcode2019/day09/day09.dart';
 
 void main() {
   /// Day 01
@@ -44,12 +37,12 @@ void main() {
 //  print("D07P02: ${day07.solvePart02()}");
 
   /// Day 08
-  final day08 = Day08("lib/day08/input.txt");
-  print("D08P01: ${day08.solvePart01()}");
-  print("D08P02: ${day08.solvePart02()}");
+//  final day08 = Day08("lib/day08/input.txt");
+//  print("D08P01: ${day08.solvePart01()}");
+//  print("D08P02: ${day08.solvePart02()}");
 
   /// Day 09
-//  final day09 = Day09("lib/day09/input.txt");
-//  print("D09P01: ${day09.solvePart01()}");
-//  print("D09P02: ${day09.solvePart02()}");
+  final day09 = Day09("lib/day09/input.txt");
+  print("D09P01: ${day09.solvePart01()}");
+  print("D09P02: ${day09.solvePart02()}");
 }

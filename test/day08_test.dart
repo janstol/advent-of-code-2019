@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:adventofcode2019/day08/day08.dart';
 import 'package:adventofcode2019/day08/space_image.dart';
 import 'package:test/test.dart';

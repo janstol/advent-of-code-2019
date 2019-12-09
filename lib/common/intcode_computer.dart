@@ -1,11 +1,10 @@
-import 'dart:async';
-
 class IntcodeComputer {
   /// Program that will be loaded into [memory].
   List<int> program;
 
   /// Computer memory where [program] runs.
-  List<int> memory;
+  /// Key = address.
+  Map<int, int> memory;
 
   /// Input instructions.
   List<int> inputInstructions;
@@ -15,12 +14,16 @@ class IntcodeComputer {
   /// Pointer to [memory].
   int pointer = 0;
 
+  int relativeBase = 0;
+
   bool _running = true;
 
   /// Creates [IntcodeComputer].
   ///
   /// Provide [program] that will be loaded into [memory].
-  IntcodeComputer(this.program) : memory = List<int>.of(program);
+  IntcodeComputer(this.program) {
+    memory = Map.from(program.asMap());
+  }
 
   /// Indicates whether computer is running or not (halt).
   bool get running => _running;
@@ -34,67 +37,65 @@ class IntcodeComputer {
     int opCode;
 
     while (opCode != 99) {
-      opCode = _getOpCodeParams()[0];
+      final params = _getOpCodeParams();
+      opCode = params[0];
+
+      final param1 = _getParameter(1, ParameterMode.immediate);
+      // final param2 = _getParameter(2, ParameterMode.immediate);
+      final param3 = _getParameter(3, ParameterMode.immediate);
+
+      final param1Val = _getParameter(1);
+      final param2Val = _getParameter(2);
+      // final param3Val = _getParameter(3);
+
+      final param1Pos = params[1] == 2 ? param1 + relativeBase : param1;
+      // final param2Pos = params[2] == 2 ? param2 + relativeBase : param2;
+      final param3Pos = params[3] == 2 ? param3 + relativeBase : param3;
 
       switch (opCode) {
         case 1: // add
-          final val1 = _getParameter(1);
-          final val2 = _getParameter(2);
-          final dest = _getParameter(3, ParameterMode.immediate);
-
-          memory[dest] = val1 + val2;
+          memory[param3Pos] = param1Val + param2Val;
           pointer += 4;
           break;
 
         case 2: // multiply
-          final val1 = _getParameter(1);
-          final val2 = _getParameter(2);
-          final dest = _getParameter(3, ParameterMode.immediate);
-
-          memory[dest] = val1 * val2;
+          memory[param3Pos] = param1Val * param2Val;
           pointer += 4;
           break;
 
         case 3: // input
           if (inputInstructions.isEmpty) return null;
 
-          final val = _getParameter(1, ParameterMode.immediate);
-          memory[val] =
-              inputInstructions.isNotEmpty ? inputInstructions.removeAt(0) : -1;
+          memory[param1Pos] = inputInstructions.removeAt(0);
           pointer += 2;
           break;
 
         case 4: // output
-          output.add(_getParameter(1));
+          output.add(param1Val);
           pointer += 2;
           break;
 
         case 5: // jump-if-true
-          final val = _getParameter(1);
-          pointer = val != 0 ? _getParameter(2) : pointer + 3;
+          pointer = param1Val != 0 ? param2Val : pointer + 3;
           break;
 
         case 6: // jump-if-false
-          final val = _getParameter(1);
-          pointer = val == 0 ? _getParameter(2) : pointer + 3;
+          pointer = param1Val == 0 ? param2Val : pointer + 3;
           break;
 
         case 7: // less than
-          final val1 = _getParameter(1);
-          final val2 = _getParameter(2);
-          final dest = _getParameter(3, ParameterMode.immediate);
-
-          memory[dest] = (val1 < val2) ? 1 : 0;
+          memory[param3Pos] = (param1Val < param2Val) ? 1 : 0;
           pointer += 4;
           break;
 
         case 8: // equals
-          final val1 = _getParameter(1);
-          final val2 = _getParameter(2);
-          final dest = _getParameter(3, ParameterMode.immediate);
-
-          memory[dest] = (val1 == val2) ? 1 : 0;
+          memory[param3Pos] = (param1Val == param2Val) ? 1 : 0;
           pointer += 4;
+          break;
+
+        case 9: // adjusts the relative base
+          relativeBase += param1Val;
+          pointer += 2;
           break;
 
         case 99: // halt
@@ -110,8 +111,9 @@ class IntcodeComputer {
   }
 
   void restart() {
-    memory = List<int>.from(program);
+    memory = Map<int, int>.from(program.asMap());
     pointer = 0;
+    relativeBase = 0;
     output = [];
     _running = true;
   }
@@ -126,10 +128,10 @@ class IntcodeComputer {
     final opCodeParams = "${memory[pointer]}".padLeft(5, "0");
 
     return [
-      int.parse(opCodeParams.substring(3)),
-      int.parse(opCodeParams[2]),
-      int.parse(opCodeParams[1]),
-      int.parse(opCodeParams[0]),
+      int.parse(opCodeParams.substring(3)), //DE
+      int.parse(opCodeParams[2]), // C
+      int.parse(opCodeParams[1]), // B
+      int.parse(opCodeParams[0]), // A
     ];
   }
 
@@ -137,13 +139,15 @@ class IntcodeComputer {
     final opCodeParams = _getOpCodeParams();
     parameterMode ??= ParameterMode.values[opCodeParams[position]];
 
-    final value = memory[pointer + position];
+    final value = memory[pointer + position] ?? 0;
 
     switch (parameterMode) {
       case ParameterMode.position:
-        return memory[value];
+        return memory[value] ?? 0;
       case ParameterMode.immediate:
         return value;
+      case ParameterMode.relative:
+        return memory[value + relativeBase] ?? 0;
       default:
         throw Exception("Parameter mode $parameterMode is not supported!");
     }
@@ -169,4 +173,9 @@ enum ParameterMode {
   ///
   /// If the parameter is 50, its value is simply 50.
   immediate,
+
+  /// Relative mode parameters don't count from address 0.
+  /// Instead, they count from a value called the relative base.
+  /// The relative base starts at 0.
+  relative,
 }
