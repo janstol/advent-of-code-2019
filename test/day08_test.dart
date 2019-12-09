@@ -27,17 +27,17 @@ void main() {
     test("Test 01", () {
       final img = SpaceImage(input: "0222112222120000", width: 2, height: 2);
       expect(img.decode(), [0, 1, 1, 0]);
-      expect(img.toString(), "\n.#\n#.");
+      expect(img.toString(), "\n #\n# ");
     });
 
     test("Solution test", () {
       final day = Day08("lib/day08/input.txt");
-      const output = "\n.##...##..#..#.###..####.\n"
-          "#..#.#..#.#.#..#..#....#.\n"
-          "#..#.#....##...#..#...#..\n"
-          "####.#....#.#..###...#...\n"
-          "#..#.#..#.#.#..#....#....\n"
-          "#..#..##..#..#.#....####.";
+      const output = "\n ##   ##  #  # ###  #### \n"
+          "#  # #  # # #  #  #    # \n"
+          "#  # #    ##   #  #   #  \n"
+          "#### #    # #  ###   #   \n"
+          "#  # #  # # #  #    #    \n"
+          "#  #  ##  #  # #    #### ";
 
       expect(day.solvePart02(), output);
     });

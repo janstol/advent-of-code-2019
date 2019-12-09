@@ -34,11 +34,9 @@ class SpaceImage {
         output.writeln();
       }
 
-      if (pixel == 0) {
-        output.write(".");
-      } else if (pixel == 1) {
+      if (pixel == 1) {
         output.write("#");
-      } else if (pixel == 2) {
+      } else {
         output.write(" ");
       }
     }
