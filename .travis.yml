@@ -1,6 +1,3 @@
 language: dart
 dart:
   - stable
-dart_task:
-  - test: --tags no-xvfb
-  xvfb: false
