@@ -15,3 +15,4 @@
 | 07 | [Amplification Circuit](https://adventofcode.com/2019/day/7) | [day07.dart](lib/day07/day07.dart) | [input.txt](lib/day07/input.txt) | [day07_test.dart](test/day07_test.dart) |
 | 08 | [Space Image Format](https://adventofcode.com/2019/day/8) | [day08.dart](lib/day08/day08.dart) | [input.txt](lib/day08/input.txt) | [day08_test.dart](test/day08_test.dart) |
 | 09 | [Sensor Boost](https://adventofcode.com/2019/day/9) | [day09.dart](lib/day09/day09.dart) | [input.txt](lib/day09/input.txt) | [day09_test.dart](test/day09_test.dart) |
+| 10 | [Monitoring Station](https://adventofcode.com/2019/day/10) | [day10.dart](lib/day10/day10.dart) | [input.txt](lib/day10/input.txt) | [day10_test.dart](test/day10_test.dart) |
