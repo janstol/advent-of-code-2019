@@ -5,8 +5,7 @@ class Day09 extends Day<List<int>, int, int> {
   Day09(String input) : super(input);
 
   @override
-  List<int> parseInput(String input) =>
-      input.split(",").map(int.parse).toList();
+  List<int> parseInput(String input) => IntcodeComputer.parseProgram(input);
 
   @override
   int solvePart01() {

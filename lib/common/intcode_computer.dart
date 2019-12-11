@@ -34,6 +34,7 @@ class IntcodeComputer {
   }) {
     _substituteMemory(subs);
 
+    output.clear();
     int opCode;
 
     while (opCode != 99) {
