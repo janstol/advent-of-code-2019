@@ -17,3 +17,4 @@
 | 09 | [Sensor Boost](https://adventofcode.com/2019/day/9) | [day09.dart](lib/day09/day09.dart) | [input.txt](lib/day09/input.txt) | [day09_test.dart](test/day09_test.dart) |
 | 10 | [Monitoring Station](https://adventofcode.com/2019/day/10) | [day10.dart](lib/day10/day10.dart) | [input.txt](lib/day10/input.txt) | [day10_test.dart](test/day10_test.dart) |
 | 11 | [Space Police](https://adventofcode.com/2019/day/11) | [day11.dart](lib/day11/day11.dart) | [input.txt](lib/day11/input.txt) | [day11_test.dart](test/day11_test.dart) |
+| 12 | [The N-Body Problem](https://adventofcode.com/2019/day/12) | [day12.dart](lib/day12/day12.dart) | [input.txt](lib/day12/input.txt) | [day12_test.dart](test/day12_test.dart) |

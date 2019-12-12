@@ -1,6 +1,6 @@
 import 'package:adventofcode2019/common/day.dart';
 import 'package:adventofcode2019/common/intcode_computer.dart';
-import 'package:adventofcode2019/common/util.dart';
+import 'package:adventofcode2019/common/extensions.dart';
 
 class Day07 extends Day<List<int>, int, int> {
   Day07(String input) : super(input);
@@ -17,7 +17,7 @@ class Day07 extends Day<List<int>, int, int> {
 
     final computer = IntcodeComputer(input);
 
-    for (final sequence in permutate(phases)) {
+    for (final sequence in phases.permutate()) {
       int out = 0;
       for (final num in sequence) {
         out = computer.run(inputInstructions: [num, out]);
@@ -48,7 +48,7 @@ class Day07 extends Day<List<int>, int, int> {
     int max = 0;
     final List<List<int>> out = [[], [], [], [], []];
 
-    for (final sequence in permutate(phases)) {
+    for (final sequence in phases.permutate()) {
       for (final computer in computers) {
         computer.restart();
       }
