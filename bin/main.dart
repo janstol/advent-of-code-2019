@@ -1,4 +1,4 @@
-import 'package:adventofcode2019/day15/day15.dart';
+import 'package:adventofcode2019/day16/day16.dart';
 
 void main() {
   /// Day 01
@@ -74,7 +74,12 @@ void main() {
 //  print("D14P02: ${day14.solvePart02()}");
 
   /// Day 15
-  final day15 = Day15("lib/day15/input.txt");
-  print("D15P01: ${day15.solvePart01()}");
-  print("D15P02: ${day15.solvePart02()}");
+//  final day15 = Day15("lib/day15/input.txt");
+//  print("D15P01: ${day15.solvePart01()}");
+//  print("D15P02: ${day15.solvePart02()}");
+
+  /// Day 16
+  final day16 = Day16("lib/day16/input.txt");
+  print("D16P01: ${day16.solvePart01()}");
+  print("D16P02: ${day16.solvePart02()}");
 }
