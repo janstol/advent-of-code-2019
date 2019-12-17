@@ -22,3 +22,4 @@
 | 14 | [Space Stoichiometry](https://adventofcode.com/2019/day/14) | [day14.dart](lib/day14/day14.dart) | [input.txt](lib/day14/input.txt) | [day14_test.dart](test/day14_test.dart) |
 | 15 | [Oxygen System](https://adventofcode.com/2019/day/15) | [day15.dart](lib/day15/day15.dart) | [input.txt](lib/day15/input.txt) | [day15_test.dart](test/day15_test.dart) |
 | 16 | [Flawed Frequency Transmission](https://adventofcode.com/2019/day/16) | [day16.dart](lib/day16/day16.dart) | [input.txt](lib/day16/input.txt) | [day16_test.dart](test/day16_test.dart) |
+| 17 | [Set and Forget](https://adventofcode.com/2019/day/17) | [day17.dart](lib/day17/day17.dart) | [input.txt](lib/day17/input.txt) | [day17_test.dart](test/day17_test.dart) |
